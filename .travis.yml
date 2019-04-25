@@ -1,0 +1,20 @@
+language: php
+php:
+    - 7.1
+    - 7.2
+    - 7.3
+
+before_script:
+    - composer install --no-interaction --prefer-dist
+
+script:
+    - composer validate
+    - vendor/bin/phpcs src/ --standard=vendor/pd/coding-standard/src/PeckaCodingStandard/ruleset.xml
+    - vendor/bin/phpcs src/ --standard=vendor/pd/coding-standard/src/PeckaCodingStandardStrict/ruleset.xml
+    - vendor/bin/phpstan analyse src/ --level 7 --no-progress
+
+sudo: false
+
+cache:
+    directories:
+        - $HOME/.composer/cache
