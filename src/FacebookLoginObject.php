@@ -24,18 +24,25 @@ final class FacebookLoginObject
 	 */
 	private $lastName;
 
+	/**
+	 * @var \Facebook\Authentication\AccessToken
+	 */
+	private $accessToken;
+
 
 	public function __construct(
 		?string $facebookId,
 		?string $email,
 		?string $firstName,
-		?string $lastName
+		?string $lastName,
+		\Facebook\Authentication\AccessToken $accessToken
 	)
 	{
 		$this->email = $email;
 		$this->firstName = $firstName;
 		$this->lastName = $lastName;
 		$this->facebookId = $facebookId;
+		$this->accessToken = $accessToken;
 	}
 
 
@@ -66,5 +73,11 @@ final class FacebookLoginObject
 	public function setEmail(string $email): void
 	{
 		$this->email = $email;
+	}
+
+
+	public function getAccessToken(): \Facebook\Authentication\AccessToken
+	{
+		return $this->accessToken;
 	}
 }

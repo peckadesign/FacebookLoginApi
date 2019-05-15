@@ -4,13 +4,17 @@ namespace Pd\FacebookLoginApi;
 
 final class FacebookUserMapper
 {
-	public function map(\Facebook\GraphNodes\GraphUser $graphUser): \Pd\FacebookLoginApi\FacebookLoginObject
+	public function map(
+		\Facebook\GraphNodes\GraphUser $graphUser,
+		\Facebook\Authentication\AccessToken $accessToken
+	): FacebookLoginObject
 	{
-		$facebookUser = new \Pd\FacebookLoginApi\FacebookLoginObject(
+		$facebookUser = new FacebookLoginObject(
 			$graphUser->getId(),
 			$graphUser->getEmail(),
 			$graphUser->getFirstName(),
-			$graphUser->getLastName()
+			$graphUser->getLastName(),
+			$accessToken
 		);
 
 		return $facebookUser;

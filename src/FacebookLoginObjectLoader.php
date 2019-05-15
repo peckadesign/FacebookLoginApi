@@ -10,18 +10,24 @@ final class FacebookLoginObjectLoader
 	private $facebookUserMapper;
 
 	/**
-	 * @var \Pd\FacebookLoginApi\FacebookLoginResponseUserGetter
+	 * @var \Pd\FacebookLoginApi\Facebook
 	 */
-	private $facebookLoginResponseUserGetter;
+	private $facebook;
 
+	/**
+	 * @var \Pd\FacebookLoginApi\Config
+	 */
+	private $config;
 
 	public function __construct(
 		\Pd\FacebookLoginApi\FacebookUserMapper $facebookUserMapper,
-		\Pd\FacebookLoginApi\FacebookLoginResponseUserGetter $facebookLoginResponseUserGetter
+		\Pd\FacebookLoginApi\Facebook $facebook,
+		\Pd\FacebookLoginApi\Config $config
 	)
 	{
 		$this->facebookUserMapper = $facebookUserMapper;
-		$this->facebookLoginResponseUserGetter = $facebookLoginResponseUserGetter;
+		$this->facebook = $facebook;
+		$this->config = $config;
 	}
 
 
@@ -29,10 +35,17 @@ final class FacebookLoginObjectLoader
 	 * @throws \Pd\FacebookLoginApi\Exception\NoAccessToken
 	 * @throws \Facebook\Exceptions\FacebookSDKException
 	 */
-	public function load(): FacebookLoginObject
+	public function load(?\Facebook\Authentication\AccessToken $accessToken = NULL): FacebookLoginObject
 	{
-		$graphUser = $this->facebookLoginResponseUserGetter->get();
+		$acessToken = $accessToken ?: $this->facebook->getAccessToken();
+		$graphUser = $this->facebook->getGraphUser($acessToken, $this->getEndPoint());
 
-		return $this->facebookUserMapper->map($graphUser);
+		return $this->facebookUserMapper->map($graphUser, $acessToken);
+	}
+
+
+	private function getEndPoint(): string
+	{
+		return \sprintf('/me?fields=%s', \implode(',', $this->config->getFields()));
 	}
 }

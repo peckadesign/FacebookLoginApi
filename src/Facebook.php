@@ -56,9 +56,7 @@ final class Facebook
 		string $endPoint
 	): \Facebook\GraphNodes\GraphUser
 	{
-		$facebook = $this->facebook;
-
-		$facebookResponse = $facebook->get($endPoint, $accessToken);
+		$facebookResponse = $this->facebook->get($endPoint, $accessToken);
 
 		return $facebookResponse->getGraphUser();
 	}

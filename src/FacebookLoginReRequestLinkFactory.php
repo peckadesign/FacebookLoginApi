@@ -52,6 +52,6 @@ final class FacebookLoginReRequestLinkFactory
 
 		return $this->facebook
 			->getLoginReRequestUrl($redirectUrl, $this->permissions)
-		;
+			;
 	}
 }
