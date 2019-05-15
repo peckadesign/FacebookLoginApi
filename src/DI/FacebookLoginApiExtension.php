@@ -40,17 +40,6 @@ final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 			->setFactory(\Pd\FacebookLoginApi\FacebookLoginRequestLinkFactory::class)
 		;
 
-		$builder->addDefinition($this->prefix('facebookLoginResponseUserGetter'))
-			->setFactory(\Pd\FacebookLoginApi\FacebookLoginResponseUserGetter::class)
-		;
-
-		$builder->addDefinition($this->prefix('sessionAccessTokenStorage'))
-			->setFactory(\Pd\FacebookLoginApi\SessionAccessTokenStorage::class)
-			->setArguments([
-				'sessionSectionName' => $this->prefix('token'),
-			])
-		;
-
 		$builder->addDefinition($this->prefix('facebookUserMapper'))
 			->setFactory(\Pd\FacebookLoginApi\FacebookUserMapper::class)
 		;
@@ -81,10 +70,6 @@ final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 
 		$builder->addDefinition($this->prefix('facebookLoginReRequestFactory'))
 			->setFactory(\Pd\FacebookLoginApi\FacebookLoginReRequestLinkFactory::class)
-		;
-
-		$builder->addDefinition('accessTokenGetter')
-			->setFactory(\Pd\FacebookLoginApi\AccessTokenGetter::class)
 		;
 	}
 }
