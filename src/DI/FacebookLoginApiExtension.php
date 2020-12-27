@@ -25,7 +25,7 @@ final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 	{
 		parent::loadConfiguration();
 		$builder = $this->getContainerBuilder();
-		$config = $this->getConfig($this->defaults);
+		$config = \Pd\FacebookLoginApi\Adapter\Nette\DI\CompilerExtensionAdapter::mergeConfigWithDefaults($this, $this->defaults);
 
 		$builder->addDefinition($this->prefix('config'))
 			->setFactory(\Pd\FacebookLoginApi\Config::class)
