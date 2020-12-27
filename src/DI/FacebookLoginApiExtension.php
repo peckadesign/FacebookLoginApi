@@ -4,24 +4,6 @@ namespace Pd\FacebookLoginApi\DI;
 
 final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 {
-	private $defaults = [
-		'appId' => NULL,
-		'appSecret' => NULL,
-		'defaultGraphVersion' => 'v3.2',
-		'permissions' => [
-			'email',
-		],
-		'fields' => [
-			'id',
-			'first_name',
-			'last_name',
-			'email',
-		],
-		'fbApiResponseDestinationUid' => NULL,
-		'persistentDataHandler' => 'session',
-	];
-
-
 	public function getConfigSchema(): \Nette\Schema\Schema
 	{
 		return \Nette\Schema\Expect::structure(
