@@ -10,7 +10,7 @@ final class FacebookLoginReRequestLinkFactory
 	private $permissions;
 
 	/**
-	 * @var \Nette\Application\LinkGenerator
+	 * @var \Pd\FacebookLoginApi\LinkGeneratorInterface
 	 */
 	private $linkGenerator;
 
@@ -21,7 +21,7 @@ final class FacebookLoginReRequestLinkFactory
 
 	public function __construct(
 		\Pd\FacebookLoginApi\Config $config,
-		\Nette\Application\LinkGenerator $linkGenerator,
+		\Pd\FacebookLoginApi\LinkGeneratorInterface $linkGenerator,
 		\Pd\FacebookLoginApi\Facebook $facebook
 	)
 	{
