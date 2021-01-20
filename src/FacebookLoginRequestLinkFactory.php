@@ -15,7 +15,7 @@ final class FacebookLoginRequestLinkFactory
 	private $loginUrlDestination;
 
 	/**
-	 * @var \Nette\Application\LinkGenerator
+	 * @var \Pd\FacebookLoginApi\LinkGeneratorInterface
 	 */
 	private $linkGenerator;
 
@@ -26,7 +26,7 @@ final class FacebookLoginRequestLinkFactory
 
 	public function __construct(
 		\Pd\FacebookLoginApi\Config $config,
-		\Nette\Application\LinkGenerator $linkGenerator,
+		\Pd\FacebookLoginApi\LinkGeneratorInterface $linkGenerator,
 		Facebook $facebook
 	)
 	{
