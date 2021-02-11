@@ -4,6 +4,7 @@ namespace Pd\FacebookLoginApi\DI;
 
 final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 {
+	/** @var array<string, mixed> */
 	private $defaults = [
 		'appId' => NULL,
 		'appSecret' => NULL,
@@ -25,6 +26,7 @@ final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 	{
 		parent::loadConfiguration();
 		$builder = $this->getContainerBuilder();
+		/** @var array<string, mixed> $config */
 		$config = \Pd\FacebookLoginApi\Adapter\Nette\DI\CompilerExtensionAdapter::mergeConfigWithDefaults($this, $this->defaults);
 
 		$builder->addDefinition($this->prefix('config'))

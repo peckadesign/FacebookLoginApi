@@ -5,7 +5,7 @@ namespace Pd\FacebookLoginApi;
 final class Config
 {
 	/**
-	 * @var array
+	 * @var string[]
 	 */
 	private $permissions;
 
@@ -15,11 +15,15 @@ final class Config
 	private $loginUrlDestination;
 
 	/**
-	 * @var array
+	 * @var string[]
 	 */
 	private $fields;
 
 
+	/**
+	 * @param string[] $permissions
+	 * @param string[] $fields
+	 */
 	public function __construct(
 		string $loginUrlDestination,
 		array $permissions,
@@ -32,6 +36,7 @@ final class Config
 	}
 
 
+	/** @return string[] */
 	public function getPermissions(): array
 	{
 		return $this->permissions;
@@ -44,6 +49,7 @@ final class Config
 	}
 
 
+	/** @return string[] */
 	public function getFields(): array
 	{
 		return $this->fields;

@@ -18,7 +18,7 @@
 	},
 	"require-dev": {
 		"pd/coding-standard": "1.17.0",
-		"phpstan/phpstan": "0.12.11"
+		"phpstan/phpstan": "0.12.76"
 	},
 	"autoload": {
 		"psr-4": {
