@@ -5,7 +5,7 @@ namespace Pd\FacebookLoginApi;
 final class FacebookLoginReRequestLinkFactory
 {
 	/**
-	 * @var array
+	 * @var string[]
 	 */
 	private $permissions;
 

@@ -29,6 +29,9 @@ final class Facebook
 	}
 
 
+	/**
+	 * @param string[] $permissions
+	 */
 	public function getLoginUrl(string $redirectUrl, array $permissions): string
 	{
 		return $this->facebook
@@ -38,6 +41,9 @@ final class Facebook
 	}
 
 
+	/**
+	 * @param string[] $permissions
+	 */
 	public function getLoginReRequestUrl(string $redirectUrl, array $permissions): string
 	{
 		return $this->facebook

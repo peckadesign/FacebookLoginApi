@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method Pd\\FacebookLoginApi\\Facebook::getGraphUser\(\) return type has no value type specified in iterable type Facebook\\GraphNodes\\GraphUser\.$#'
+			path: src/Facebook.php
+			count: 1
+
+		-
+			message: '#^Method Pd\\FacebookLoginApi\\FacebookUserMapper::map\(\) has parameter \$graphUser with no value type specified in iterable type Facebook\\GraphNodes\\GraphUser\.$#'
+			path: src/FacebookUserMapper.php
+			count: 1
