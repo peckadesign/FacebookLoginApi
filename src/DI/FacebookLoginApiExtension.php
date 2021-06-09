@@ -14,7 +14,7 @@ final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 			'permissions' => \Nette\Schema\Expect::arrayOf('string')->default([
 				'email',
 			]),
-			'fields' => \Nette\Schema\Expect::arrayOf('string', [
+			'fields' => \Nette\Schema\Expect::arrayOf('string')->default([
 				'id',
 				'first_name',
 				'last_name',
