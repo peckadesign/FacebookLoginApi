@@ -4,8 +4,9 @@ namespace Pd\FacebookLoginApi\DI;
 
 final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 {
+
 	/** @var array<string, mixed> */
-	private $defaults = [
+	private array $defaults = [
 		'appId' => NULL,
 		'appSecret' => NULL,
 		'defaultGraphVersion' => 'v3.2',
@@ -21,6 +22,7 @@ final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 		'fbApiResponseDestinationUid' => NULL,
 		'persistentDataHandler' => 'session',
 	];
+
 
 	public function loadConfiguration(): void
 	{
@@ -74,4 +76,5 @@ final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 			->setFactory(\Pd\FacebookLoginApi\FacebookLoginReRequestLinkFactory::class)
 		;
 	}
+
 }

@@ -4,20 +4,13 @@ namespace Pd\FacebookLoginApi;
 
 final class FacebookLoginObjectLoader
 {
-	/**
-	 * @var \Pd\FacebookLoginApi\FacebookUserMapper
-	 */
-	private $facebookUserMapper;
 
-	/**
-	 * @var \Pd\FacebookLoginApi\Facebook
-	 */
-	private $facebook;
+	private \Pd\FacebookLoginApi\FacebookUserMapper $facebookUserMapper;
 
-	/**
-	 * @var \Pd\FacebookLoginApi\Config
-	 */
-	private $config;
+	private \Pd\FacebookLoginApi\Facebook $facebook;
+
+	private \Pd\FacebookLoginApi\Config $config;
+
 
 	public function __construct(
 		\Pd\FacebookLoginApi\FacebookUserMapper $facebookUserMapper,
@@ -48,4 +41,5 @@ final class FacebookLoginObjectLoader
 	{
 		return \sprintf('/me?fields=%s', \implode(',', $this->config->getFields()));
 	}
+
 }
