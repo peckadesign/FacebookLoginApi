@@ -4,30 +4,16 @@ namespace Pd\FacebookLoginApi;
 
 final class FacebookLoginObject
 {
-	/**
-	 * @var NULL|string
-	 */
-	private $facebookId;
 
-	/**
-	 * @var NULL|string
-	 */
-	private $email;
+	private ?string $facebookId;
 
-	/**
-	 * @var NULL|string
-	 */
-	private $firstName;
+	private ?string $email;
 
-	/**
-	 * @var NULL|string
-	 */
-	private $lastName;
+	private ?string $firstName;
 
-	/**
-	 * @var \Facebook\Authentication\AccessToken
-	 */
-	private $accessToken;
+	private ?string $lastName;
+
+	private \Facebook\Authentication\AccessToken $accessToken;
 
 
 	public function __construct(
@@ -80,4 +66,5 @@ final class FacebookLoginObject
 	{
 		return $this->accessToken;
 	}
+
 }

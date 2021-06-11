@@ -4,20 +4,16 @@ namespace Pd\FacebookLoginApi;
 
 final class FacebookLoginReRequestLinkFactory
 {
+
 	/**
 	 * @var string[]
 	 */
-	private $permissions;
+	private array $permissions;
 
-	/**
-	 * @var \Pd\FacebookLoginApi\LinkGeneratorInterface
-	 */
-	private $linkGenerator;
+	private \Pd\FacebookLoginApi\LinkGeneratorInterface $linkGenerator;
 
-	/**
-	 * @var \Pd\FacebookLoginApi\Facebook
-	 */
-	private $facebook;
+	private \Pd\FacebookLoginApi\Facebook $facebook;
+
 
 	public function __construct(
 		\Pd\FacebookLoginApi\Config $config,
@@ -54,4 +50,5 @@ final class FacebookLoginReRequestLinkFactory
 			->getLoginReRequestUrl($redirectUrl, $this->permissions)
 			;
 	}
+
 }

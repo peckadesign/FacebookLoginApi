@@ -4,20 +4,18 @@ namespace Pd\FacebookLoginApi;
 
 final class Config
 {
-	/**
-	 * @var string[]
-	 */
-	private $permissions;
 
-	/**
-	 * @var string
-	 */
-	private $loginUrlDestination;
+	private string $loginUrlDestination;
 
 	/**
 	 * @var string[]
 	 */
-	private $fields;
+	private array $permissions;
+
+	/**
+	 * @var string[]
+	 */
+	private array $fields;
 
 
 	/**
@@ -36,16 +34,16 @@ final class Config
 	}
 
 
+	public function getLoginUrlDestination(): string
+	{
+		return $this->loginUrlDestination;
+	}
+
+
 	/** @return string[] */
 	public function getPermissions(): array
 	{
 		return $this->permissions;
-	}
-
-
-	public function getLoginUrlDestination(): string
-	{
-		return $this->loginUrlDestination;
 	}
 
 
@@ -54,4 +52,5 @@ final class Config
 	{
 		return $this->fields;
 	}
+
 }

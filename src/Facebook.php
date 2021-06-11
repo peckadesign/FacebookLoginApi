@@ -4,10 +4,8 @@ namespace Pd\FacebookLoginApi;
 
 final class Facebook
 {
-	/**
-	 * @var \Facebook\Facebook
-	 */
-	private $facebook;
+
+	private \Facebook\Facebook $facebook;
 
 
 	public function __construct(
@@ -111,4 +109,5 @@ final class Facebook
 
 		return $accessToken;
 	}
+
 }

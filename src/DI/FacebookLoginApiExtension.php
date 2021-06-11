@@ -4,30 +4,33 @@ namespace Pd\FacebookLoginApi\DI;
 
 final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 {
-	/** @var array<string, mixed> */
-	private $defaults = [
-		'appId' => NULL,
-		'appSecret' => NULL,
-		'defaultGraphVersion' => 'v3.2',
-		'permissions' => [
-			'email',
-		],
-		'fields' => [
-			'id',
-			'first_name',
-			'last_name',
-			'email',
-		],
-		'fbApiResponseDestinationUid' => NULL,
-		'persistentDataHandler' => 'session',
-	];
+
+	public function getConfigSchema(): \Nette\Schema\Schema
+	{
+		return \Nette\Schema\Expect::structure([
+			'appId' => \Nette\Schema\Expect::string()->nullable(),
+			'appSecret' => \Nette\Schema\Expect::string()->nullable(),
+			'defaultGraphVersion' => \Nette\Schema\Expect::string('v3.2'),
+			'permissions' => \Nette\Schema\Expect::arrayOf('string')->default([
+				'email',
+			]),
+			'fields' => \Nette\Schema\Expect::arrayOf('string')->default([
+				'id',
+				'first_name',
+				'last_name',
+				'email',
+			]),
+			'fbApiResponseDestinationUid' => \Nette\Schema\Expect::string()->nullable(),
+			'persistentDataHandler' => \Nette\Schema\Expect::string('session'),
+		]);
+	}
+
 
 	public function loadConfiguration(): void
 	{
-		parent::loadConfiguration();
 		$builder = $this->getContainerBuilder();
 		/** @var array<string, mixed> $config */
-		$config = \Pd\FacebookLoginApi\Adapter\Nette\DI\CompilerExtensionAdapter::mergeConfigWithDefaults($this, $this->defaults);
+		$config = (array) $this->getConfig();
 
 		$builder->addDefinition($this->prefix('config'))
 			->setFactory(\Pd\FacebookLoginApi\Config::class)
@@ -74,4 +77,5 @@ final class FacebookLoginApiExtension extends \Nette\DI\CompilerExtension
 			->setFactory(\Pd\FacebookLoginApi\FacebookLoginReRequestLinkFactory::class)
 		;
 	}
+
 }

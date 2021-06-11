@@ -4,6 +4,7 @@ namespace Pd\FacebookLoginApi;
 
 final class FacebookUserMapper
 {
+
 	public function map(
 		\Facebook\GraphNodes\GraphUser $graphUser,
 		\Facebook\Authentication\AccessToken $accessToken
@@ -19,4 +20,5 @@ final class FacebookUserMapper
 
 		return $facebookUser;
 	}
+
 }
