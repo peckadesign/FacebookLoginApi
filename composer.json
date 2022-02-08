@@ -18,11 +18,16 @@
 	},
 	"require-dev": {
 		"pd/coding-standard": "^1.27",
-		"phpstan/phpstan": "0.12.88"
+		"phpstan/phpstan": "^1.4.6"
 	},
 	"autoload": {
 		"psr-4": {
 			"Pd\\FacebookLoginApi\\": "src/"
+		}
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
 		}
 	}
 }
